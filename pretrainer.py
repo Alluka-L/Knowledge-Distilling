@@ -75,7 +75,7 @@ def _pretrain(args):
     print('==> Building model...')
     if args.network == 'vgg':
         net = vgg.VGG('VGG16')
-    elif args.network == 'student':
+    elif args.network == 'studentnet':
         net = studentnet.StudentNet()
     else:
         raise NotImplementedError()
