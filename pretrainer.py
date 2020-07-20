@@ -53,7 +53,7 @@ def __test_epoch(net, testloader, device, criterion):
             correct += predicted.eq(targets).sum().item()
 
             progress_bar(batch_idx,
-                         len(testloader), 'Loss: %.3f | Acc: %.3f%% (%d/%d' %
+                         len(testloader), 'Loss: %.3f | Acc: %.3f%% (%d/%d)' %
                          (test_loss / (batch_idx + 1), 100 * correct / total,
                           correct, total))
 
