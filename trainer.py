@@ -48,15 +48,15 @@ def __test_epoch(student_net, testloader, device, criterion):
             inputs, targets = inputs.to(device), targets.to(device)
 
             outputs = student_net(inputs)
-            loss = criterion(outputs, targets)
-            test_loss += loss.item()
+            # loss = criterion(outputs, targets)
+            # test_loss += loss.item()
 
             _, predicted = outputs.max(1)
             total += targets.size(0)
             correct += predicted.eq(targets).sum().item()
 
             progress_bar(batch_idx,
-                         len(testloader), 'Loss: %.3f |Acc: %.3f%% (%d/%d' %
+                         len(testloader), 'Loss: %.3f |Acc: %.3f%% (%d/%d)' %
                          (test_loss / (batch_idx + 1), 100. * correct / total,
                           correct, total))
 
@@ -89,6 +89,7 @@ def _make_criterion(alpha=0.5, T=4.0, mode='cse'):
 def _train(args):
     device = "cuda" if torch.cuda.is_available() else "cpu"
 
+    best_acc = 0.0
     # Data
     print('==> Preparing data...')
     trainloader, testloader = dataset.get_loader()
@@ -128,7 +129,10 @@ def _train(args):
         print('\nEpoch: %d' % epoch_idx)
 
         __train_epoch(student_net, teacher_net, trainloader, device, criterion, optimizer)
-        __test_epoch(student_net, testloader, device, criterion)
+        acc = __test_epoch(student_net, testloader, device, criterion)
+
+        if acc > best_acc:
+            best_acc = acc
 
         if args.optimizer == 'sgd-cifar10':
             if epoch_idx == 150:
@@ -136,11 +140,13 @@ def _train(args):
             elif epoch_idx == 250:
                 optimizer = optim.SGD(student_net.parameters(), lr=0.001, momentum=0.9)
 
+    print("Finished! The best acc is: ", str(best_acc) + '%')
+
 
 def main():
     parser = argparse.ArgumentParser(description='PyTorch CIFAR10 Trining')
     parser.add_argument('--lr', default=0.0001, type=float, help='learning rate')
-    parser.add_argument('--epoch', default=300, type=int, help='epoch')
+    parser.add_argument('--n_epoch', default=300, type=int, help='epoch')
     parser.add_argument('--alpha', default=1.0, type=float, help='weight for soft loss.')
     parser.add_argument('--T', default=1.0, type=float, help='T for Temperature scaling')
     parser.add_argument('--teacher_model_name', default='ckpt', type=str, help='name for teacher model')

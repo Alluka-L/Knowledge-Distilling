@@ -15,7 +15,7 @@ python -m pretrainer --optimizer=sgd --lr=0.001 --start_epoch=251 --n_epoch=50  
 ```
 
 ### EXP0. Baseline (without Knowledge Distillation)
-* Result: 85.01%  85.50%
+* Result: 85.56%
 ```
 python -m pretrainer --optimizer=adam --lr=0.0001 --start_epoch=1 --n_epoch=300 --model_name=student-scratch --network=studentnet
 ```
@@ -23,6 +23,14 @@ python -m pretrainer --optimizer=adam --lr=0.0001 --start_epoch=1 --n_epoch=300 
 ### EXP1. Effect of loss function
 * Similar performance.
 ```
-python -m trainer --T=1.0 --alpha=1.0 --kd_mode=cse # 84.99%  85.70%
-python -m trainer --T=1.0 --alpha=1.0 --kd_mode=mse # 84.85%  85.26%
+python -m trainer --T=1.0 --alpha=1.0 --kd_mode=cse # 85.70%
+python -m trainer --T=1.0 --alpha=1.0 --kd_mode=mse # 85.71%
 ```
+
+### EXP2. Effect of Alpha
+* alpha = 0.5 may show better performance.
+```
+python -m trainer --T=1.0 --alpha=1.0 --kd_mode=cse # 84.99%
+python -m trainer --T=1.0 --alpha=0.5 --kd_mode=cse # 85.38%
+python -m trainer --T=1.0 --alpha=1.0 --kd_mode=mse # 84.85%
+python -m trainer --T=1.0 --alpha=0.5 --kd_mode=mse # 84.92%
