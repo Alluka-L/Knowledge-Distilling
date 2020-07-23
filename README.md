@@ -28,9 +28,16 @@ python -m trainer --T=1.0 --alpha=1.0 --kd_mode=mse # 85.71%
 ```
 
 ### EXP2. Effect of Alpha
-* alpha = 0.5 may show better performance.
 ```
-python -m trainer --T=1.0 --alpha=1.0 --kd_mode=cse # 84.99%
-python -m trainer --T=1.0 --alpha=0.5 --kd_mode=cse # 85.38%
-python -m trainer --T=1.0 --alpha=1.0 --kd_mode=mse # 84.85%
-python -m trainer --T=1.0 --alpha=0.5 --kd_mode=mse # 84.92%
+python -m trainer --T=1.0 --alpha=0.5 --kd_mode=cse # 85.49%
+python -m trainer --T=1.0 --alpha=0.5 --kd_mode=mse # 85.46%
+```
+
+### EXP3. Effect of Temperature Scaling
+* Higher the temperature, better the performance. Consistent results with the paper.
+```
+python -m trainer --T=2.0  --alpha=1.0 --kd_mode=cse # 86.2%
+python -m trainer --T=2.0  --alpha=1.0 --kd_mode=mse # 85.53%
+python -m trainer --T=4.0  --alpha=1.0 --kd_mode=cse # 86.69%
+python -m trainer --T=4.0  --alpha=1.0 --kd_mode=mse # 86.09%
+python -m trainer --T=8.0  --alpha=1.0 --kd_mode=cse
