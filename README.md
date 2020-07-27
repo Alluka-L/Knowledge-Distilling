@@ -27,7 +27,7 @@ python -m trainer --T=1.0 --alpha=1.0 --kd_mode=cse # 85.70%
 python -m trainer --T=1.0 --alpha=1.0 --kd_mode=mse # 85.71%
 ```
 
-### EXP2. Effect of Alpha
+### EXP2. Effect of model
 ```
 python -m trainer --T=1.0 --alpha=0.5 --kd_mode=cse # 85.49%
 python -m trainer --T=1.0 --alpha=0.5 --kd_mode=mse # 85.46%
@@ -36,13 +36,23 @@ python -m trainer --T=1.0 --alpha=0.5 --kd_mode=mse # 85.46%
 ### EXP3. Effect of Temperature Scaling
 * Higher the temperature, better the performance. Consistent results with the paper.
 ```
-python -m trainer --T=2.0  --alpha=1.0 --kd_mode=cse # 86.2%
-python -m trainer --T=2.0  --alpha=1.0 --kd_mode=mse # 85.53%
-python -m trainer --T=4.0  --alpha=1.0 --kd_mode=cse # 86.69%
-python -m trainer --T=4.0  --alpha=1.0 --kd_mode=mse # 86.09%
-python -m trainer --T=8.0  --alpha=1.0 --kd_mode=cse # 86.24%
-python -m trainer --T=8.0  --alpha=1.0 --kd_mode=mse # 86.89%
+python -m trainer --T=2.0   --alpha=1.0 --kd_mode=cse # 86.2%
+python -m trainer --T=2.0   --alpha=1.0 --kd_mode=mse # 85.53%
+python -m trainer --T=4.0   --alpha=1.0 --kd_mode=cse # 86.69%
+python -m trainer --T=4.0   --alpha=1.0 --kd_mode=mse # 86.09%
+python -m trainer --T=8.0   --alpha=1.0 --kd_mode=cse # 86.24%
+python -m trainer --T=8.0   --alpha=1.0 --kd_mode=mse # 86.89%
 python -m trainer --T=12.0  --alpha=1.0 --kd_mode=cse # 86.01%
 python -m trainer --T=12.0  --alpha=1.0 --kd_mode=mse # 86.56%
-python -m trainer --T=16.0  --alpha=1.0 --kd_mode=cse #
-python -m trainer --T=16.0  --alpha=1.0 --kd_mode=mse #
+python -m trainer --T=16.0  --alpha=1.0 --kd_mode=cse # 86.41%
+python -m trainer --T=16.0  --alpha=1.0 --kd_mode=mse # 86.46%
+```
+
+### EXP4. More Alpha Tuning
+* alpha=0.5 seems to be local optimal.
+```
+python -m trainer --T=8.0 --alpha=0.1 --kd_mode=cse #
+python -m trainer --T=8.0 --alpha=0.3 --kd_mode=cse #
+python -m trainer --T=16.0 --alpha=0.5 --kd_mode=cse #
+python -m trainer --T=16.0 --alpha=0.7 --kd_mode=cse #
+python -m trainer --T=16.0 --alpha=0.9 --kd_mode=cse #
