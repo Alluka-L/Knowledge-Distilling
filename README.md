@@ -49,10 +49,13 @@ python -m trainer --T=16.0  --alpha=1.0 --kd_mode=mse # 86.46%
 ```
 
 ### EXP4. More Alpha Tuning
-* alpha=0.5 seems to be local optimal.
 ```
-python -m trainer --T=8.0 --alpha=0.1 --kd_mode=cse #
-python -m trainer --T=8.0 --alpha=0.3 --kd_mode=cse #
+python -m trainer --T=8.0  --alpha=0.1 --kd_mode=cse # 86.52%
+python -m trainer --T=8.0  --alpha=0.3 --kd_mode=cse # 86.97%
+python -m trainer --T=8.0  --alpha=0.5 --kd_mode=cse # 86.86%
+python -m trainer --T=8.0  --alpha=0.7 --kd_mode=cse # 86.79%
+python -m trainer --T=8.0  --alpha=0.9 --kd_mode=cse #
 python -m trainer --T=16.0 --alpha=0.5 --kd_mode=cse #
 python -m trainer --T=16.0 --alpha=0.7 --kd_mode=cse #
 python -m trainer --T=16.0 --alpha=0.9 --kd_mode=cse #
+```
