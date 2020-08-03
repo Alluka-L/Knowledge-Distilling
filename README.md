@@ -65,9 +65,9 @@ python -m trainer --T=16.0 --alpha=0.3 --kd_mode=cse # 86.45%
 python -m trainer --T=16.0 --alpha=0.5 --kd_mode=cse # 86.66%
 python -m trainer --T=16.0 --alpha=0.7 --kd_mode=cse # 86.45%
 python -m trainer --T=16.0 --alpha=0.9 --kd_mode=cse # 86.53%
-python -m trainer --T=16.0 --alpha=0.1 --kd_mode=mse
-python -m trainer --T=16.0 --alpha=0.3 --kd_mode=mse
-python -m trainer --T=16.0 --alpha=0.5 --kd_mode=mse
-python -m trainer --T=16.0 --alpha=0.7 --kd_mode=mse
+python -m trainer --T=16.0 --alpha=0.1 --kd_mode=mse # 85.72%
+python -m trainer --T=16.0 --alpha=0.3 --kd_mode=mse # 85.23%
+python -m trainer --T=16.0 --alpha=0.5 --kd_mode=mse # 85.72%
+python -m trainer --T=16.0 --alpha=0.7 --kd_mode=mse # 86.34%
 python -m trainer --T=16.0 --alpha=0.9 --kd_mode=mse
 ```
