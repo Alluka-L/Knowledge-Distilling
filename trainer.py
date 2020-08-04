@@ -149,9 +149,9 @@ def main():
     parser.add_argument('--n_epoch', default=300, type=int, help='epoch')
     parser.add_argument('--alpha', default=1.0, type=float, help='weight for soft loss.')
     parser.add_argument('--T', default=1.0, type=float, help='T for Temperature scaling')
-    parser.add_argument('--teacher_model_name', default='ckpt', type=str, help='name for teacher model')
+    parser.add_argument('--teacher_model_name', default='ckpt', type=str, help='na me for teacher model')
     parser.add_argument('--optimizer', default='adam',
-                        choices=['sgd', 'sgd-cifiar10', 'adam'],
+                        choices=['sgd', 'sgd-cifar10', 'adam'],
                         type=str,
                         help='name for optimizer')
     parser.add_argument('--kd_mode', default='cse',
