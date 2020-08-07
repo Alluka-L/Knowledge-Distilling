@@ -81,6 +81,6 @@ python -m trainer --T=8.0 --alpha=0.9 --kd_mode=cse --optimizer=sgd-cifar10 # 85
 python -m trainer --T=8.0 --alpha=0.3 --kd_mode=mse --optimizer=sgd-cifar10 # 87.06%
 python -m trainer --T=8.0 --alpha=0.5 --kd_mode=mse --optimizer=sgd-cifar10 # 87.11%
 python -m trainer --T=8.0 --alpha=0.7 --kd_mode=mse --optimizer=sgd-cifar10 # 88.05%
-python -m trainer --T=8.0 --alpha=0.9 --kd_mode=mse --optimizer=sgd-cifar10 #
+python -m trainer --T=8.0 --alpha=0.9 --kd_mode=mse --optimizer=sgd-cifar10 # 88.3%
 python -m pretrainer --model_name=student-scratch-sgd-cifar10 --network=studentnet --optimizer=sgd-cifar10 #
 ```

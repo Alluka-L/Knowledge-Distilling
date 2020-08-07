@@ -127,6 +127,7 @@ def _pretrain(args):
                 optimizer = optim.SGD(net.parameters(), lr=0.01, momentum=0.9)
             elif epoch_idx == 250:
                 optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
+    print("Finished! The best acc is: ", str(best_acc) + '%')
 
 
 def main():
